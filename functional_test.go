@@ -1,4 +1,4 @@
-package gofunctional
+package functional
 
 import (
 	"reflect"
@@ -52,6 +52,15 @@ func TestReduce(t *testing.T) {
 			},
 			want:    10,
 			wantErr: false,
+		},
+		{
+			name: "Empty slice",
+			args: args{
+				f:  func(x, y int) int { return x },
+				xs: []int{},
+			},
+			want:    0,
+			wantErr: true,
 		},
 	}
 	for _, tt := range tests {
